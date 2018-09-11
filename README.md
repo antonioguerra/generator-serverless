@@ -12,13 +12,36 @@ npm install -g yo @rpoc/generator-serverless
 
 ### Base
 
-- Mocha
+Sets up a unit-tested RESTful API serverless application for AWS API Gateway, using Lambda and DynamoDB.
+
+- Axios
+- AWS-SDK
 - Chai
+- Eslint
+- Mocha
+- Nyc
+- Proxyquire
+- Sinon
+- UUID
 
 ```bash
 serverless create --template aws-nodejs --path myapi
 cd myapi
+npm init
 yo @rpoc/serverless:base
+sls deploy
+```
+
+You can now invoke your RESTful API, *your endpoint (<endpoint URL>) is outputted when deploy is done*.
+
+```bash
+  curl -X OPTIONS <endpoint URL>
+  curl -X POST <endpoint URL> --data '"{ "uuid": "1", "Label": "Default 1" }'
+  curl -X PUT <endpoint URL> --data '"{ "uuid": "1", "Label": "Default One" }'
+  curl -X PATCH <endpoint URL> --data '"{ "uuid": "1", "Label": "Default #1" }'
+  curl -X GET <endpoint URL>
+  curl -X GET <endpoint URL>?uuid=1
+  curl -X DELETE <endpoint URL>?uuid=1
 ```
 
 ## LICENSE

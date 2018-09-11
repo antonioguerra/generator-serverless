@@ -19,6 +19,7 @@
     "nyc",
     "poc",
     "rapid",
+    "sinon",
     "yeoman-generator"
   ],
   "dependencies": {

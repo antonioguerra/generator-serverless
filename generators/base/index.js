@@ -23,13 +23,27 @@ module.exports = class extends Generator {
 
     const fileTemplates = [
       '_editorconfig',
+      '_env',
       '_eslintignore',
       '_eslintrc',
       '_npmrc',
       '_nvmrc',
       '_nycrc',
+      'handle.js',
+      'serverless.yml',
+      'src/functions/createDefaultFunction.js',
+      'src/helpers/responseHelpers.js',
+      'src/tasks/deleteDefaultTask.js',
+      'src/tasks/getDefaultTask.js',
+      'src/tasks/upsertDefaultTask.js',
       'test/_setup.test.js',
+      'test/integration/handle.test.js',
       'test/mocha.opts',
+      'test/unit/functions/createDefaultFunction.test.js',
+      'test/unit/helpers/responseHelpers.test.js',
+      'test/unit/tasks/deleteDefaultTask.test.js',
+      'test/unit/tasks/getDefaultTask.test.js',
+      'test/unit/tasks/upsertDefaultTask.test.js',
     ];
 
     this.fs.append(
@@ -42,7 +56,7 @@ module.exports = class extends Generator {
         this.templatePath(filename),
         this.destinationPath(filename.replace(/^_/, '.')),
         {
-          title: pkgConfig.name,
+          name: pkgConfig.name,
         }
       );
     });
@@ -51,10 +65,20 @@ module.exports = class extends Generator {
   install() {
     this.npmInstall([
       'chai',
+      'dotenv',
+      'eslint',
       'mocha',
       'mocha-junit-reporter',
       'nyc',
+      'proxyquire',
+      'sinon',
     ], { 'save-dev': true });
+
+    this.npmInstall([
+      'axios',
+      'aws-sdk',
+      'uuid',
+    ]);
   }
 };
 
