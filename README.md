@@ -32,7 +32,7 @@ yo @rpoc/serverless:base
 sls deploy
 ```
 
-You can now invoke your RESTful API, *your endpoint (<endpoint URL>) is outputted when deploy is done*.
+You can now invoke your RESTful API, your endpoint (<endpoint URL>) is outputted when deploy is done.
 
 ```bash
   curl -X OPTIONS <endpoint URL>
