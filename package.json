@@ -13,12 +13,19 @@
     "generators"
   ],
   "keywords": [
+    "api",
+    "api-gateway",
+    "aws",
     "chai",
+    "dynamodb",
     "mocha",
     "mvp",
     "nyc",
     "poc",
+    "proxyquire",
     "rapid",
+    "rest",
+    "serverless",
     "sinon",
     "yeoman-generator"
   ],
