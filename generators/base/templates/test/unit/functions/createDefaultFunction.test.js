@@ -156,6 +156,9 @@ describe('test/unit/functions/createDefaultFunction.test.js', () => {
   });
 
   describe('POST', () => {
+    it('responds with 201 Created');
+    it('responds with Location header pointing to the resource');
+
     it('receives parsed body', async () => {
       const upsertDefaultTask = sinon.stub().resolves();
       const responseSuccess = sinon.stub().returns('resolves');
