@@ -1,0 +1,27 @@
+{
+  "name": "@rpoc/generator-serverless",
+  "author": "Robert Brewitz Borg <hello@robertbrewitz.com>",
+  "version": "1.0.0",
+  "description": "Yeoman generators for the serverless framework for creating rapid proof-of-concepts",
+  "license": "MIT",
+  "homepage": "https://github.com/rpoc/generator-serverless#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpoc/generator-serverless.git"
+  },
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "chai",
+    "mocha",
+    "mvp",
+    "nyc",
+    "poc",
+    "rapid",
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^3.1.1"
+  }
+}
