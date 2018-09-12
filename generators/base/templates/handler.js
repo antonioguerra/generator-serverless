@@ -5,10 +5,10 @@ const {
   responseSuccess,
 } = require('./src/helpers/responseHelpers');
 
-// Functions
+// Functions - Keep comment for generator
 const createDefaultFunction = require('./src/functions/createDefaultFunction');
 
-// Tasks
+// Tasks - Keep comment for generator
 const deleteDefaultTask = require('./src/tasks/deleteDefaultTask');
 const getDefaultTask = require('./src/tasks/getDefaultTask');
 const upsertDefaultTask = require('./src/tasks/upsertDefaultTask');

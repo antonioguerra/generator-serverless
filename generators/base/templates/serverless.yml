@@ -2,29 +2,16 @@ service: <%= name %>
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: ${opt:stage, 'dev'}
+  stage: '${opt:stage, ''dev''}'
   region: eu-central-1
-  profile: default # which credentials profile to use from ~/.aws/credentials
+  profile: default
   timeout: 30
   environment:
-    STAGE: ${self:provider.stage}
+    STAGE: '${self:provider.stage}'
 resources:
   Resources:
-    DefaultsTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: ${self:provider.stage}-defaults
-        AttributeDefinitions:
-          - AttributeName: uuid
-            AttributeType: S
-        KeySchema:
-          - AttributeName: uuid
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
     DynamoDBIamPolicy:
-      Type: AWS::IAM::Policy
+      Type: 'AWS::IAM::Policy'
       DependsOn:
         - DefaultsTable
       Properties:
@@ -34,36 +21,33 @@ resources:
           Statement:
             - Effect: Allow
               Action:
-                - dynamodb:Scan
-                - dynamodb:GetItem
-                - dynamodb:UpdateItem
-                - dynamodb:DeleteItem
-              Resource: arn:aws:dynamodb:*:*:table/${self:provider.stage}-defaults
+                - 'dynamodb:Scan'
+                - 'dynamodb:GetItem'
+                - 'dynamodb:UpdateItem'
+                - 'dynamodb:DeleteItem'
+              Resource: 'arn:aws:dynamodb:*:*:table/${self:provider.stage}-defaults'
         Roles:
           - Ref: IamRoleLambdaExecution
-
+    DefaultsTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: '${self:provider.stage}-defaults'
+        AttributeDefinitions:
+          - AttributeName: uuid
+            AttributeType: S
+        KeySchema:
+          - AttributeName: uuid
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
 functions:
   defaultFunction:
-    name: ${self:provider.stage}-defaultFunction
-    handler: handle.defaultFunction
+    name: '${self:provider.stage}-defaultFunction'
+    handler: handler.defaultFunction
     memorySize: 128
     events:
       - http:
-          path: default
+          path: defaults
           method: any
           cors: true
-  ##
-  # Example proxy function if you require a authentication gateway for
-  # external APIs, if you don't want to expose your API keys on the client-side.
-  #
-  # someApiProxyFunction:
-  #   name: ${self:provider.stage}-someApiProxyFunction
-  #   handler: handle.someApiProxyFunction
-  #   memorySize: 128
-  #   events:
-  #     - http:
-  #       path: some-api/{proxy+}
-  #       method: any
-  #       cors: true
-  ##
-
