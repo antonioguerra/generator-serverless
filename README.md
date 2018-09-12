@@ -44,6 +44,16 @@ You can now invoke your RESTful API, your endpoint (<endpoint URL>) is outputted
   curl -X DELETE <endpoint URL>?uuid=1
 ```
 
+### CRUD
+
+Add a Resource with create, read, update, and delete REST API.
+
+Requires `@rpoc/serverless:base` generator to have been run
+
+```
+yo @rpoc/serverless:crud
+```
+
 ## LICENSE
 
 Copyright 2018 Robert Brewitz Borg
