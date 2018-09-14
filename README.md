@@ -1,5 +1,9 @@
 # Yeoman generator for Rapid Proof-of-Concepts in Serverless
 
+[![npm](https://img.shields.io/npm/v/@rpoc/generator-serverless.svg)](https://www.npmjs.com/package/@rpoc/generator-serverless)
+[![npm](https://img.shields.io/npm/dt/@rpoc/generator-serverless.svg)](https://www.npmjs.com/package/@rpoc/generator-serverless)
+[![NpmLicense](https://img.shields.io/npm/l/@rpoc/generator-serverless.svg)](https://opensource.org/licenses/MIT)
+
 A collection of Serverless generators for developing Rapid Proof-of-Concepts.
 
 ## Installation
